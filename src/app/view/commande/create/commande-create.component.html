@@ -1,0 +1,37 @@
+<p-dialog [(visible)]="createCommandeDialog" [modal]="true" [style]="{width: '70vw'}" header="Commande Details"
+          styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Commande">
+                <div class="p-field">
+                    <label for="1">reference</label>
+                    <input [(ngModel)]="selectedCommande.reference" autofocus class="p-mb-2 p-mr-2" id="1" pInputText
+                           placeholder="reference" required type="text"/>
+                </div>
+                <div class="p-field">
+                    <label for="2">prixTotal</label>
+                    <p-inputNumber [(ngModel)]="selectedCommande.prixTotal" class="p-mb-2 p-mr-2" id="2"
+                                   placeholder="prixTotal"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="3">dateCreation</label>
+                    <p-calendar [(ngModel)]="selectedCommande.dateCreation" dateFormat="yy-mm-dd" id="3"
+                                placeholder="dateCreation"></p-calendar>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideCreateDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
+                pRipple></button>
+        <button (click)="save()" class="p-button-text" icon="pi pi-check" label="Save" pButton pRipple></button>
+
+
+    </ng-template>
+
+
+</p-dialog>

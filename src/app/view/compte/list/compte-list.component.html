@@ -1,0 +1,115 @@
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button (click)="openCreateCompte('compte')" class="p-button-success p-mr-2 p-mb-2"
+                            icon="pi pi-plus" label="New" pButton
+                            pRipple></button>
+                    <button (click)="this.findByCriteriaShow = !this.findByCriteriaShow"
+                            class="p-button-success p-mr-2 p-mb-2"
+                            icon="pi pi-{{findByCriteriaShow?'angle-down':'angle-right'}}"
+                            label="Search"
+                            pButton
+                            pRipple></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <div *ngIf="findByCriteriaShow" class="">
+                        <input [(ngModel)]="searchCompte.reference" autofocus class="p-mr-1" pInputText
+                               placeholder="reference" type="text"/>
+                        <p-calendar [(ngModel)]="searchCompteMin"
+                                    class="p-mr-2" dateFormat="dd.mm.yy"
+                                    placeholder="dateMin"></p-calendar>
+                        <p-calendar [(ngModel)]="searchCompteMax"
+                                    class="p-mr-2" dateFormat="dd.mm.yy"
+                                    placeholder="dateMax"></p-calendar>
+                        <button (click)="searchRequest()" class="p-button-info p-mr-2" icon="pi pi-sort-amount-down"
+                                label="Submit"
+                                pButton pRipple></button>
+                    </div>
+                </ng-template>
+            </p-toolbar>
+
+            <p-table #dt [(selection)]="selectedCompte" [columns]="cols"
+                     [globalFilterFields]="['reference','total','totalPaye']" [paginator]="true"
+                     [rowHover]="true" [rows]="4"
+                     [showCurrentPageReport]="true" [value]="comptes"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                     dataKey="id"
+                     styleClass="p-datatable-customers">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste des Comptes</h5>
+                        <span class="p-input-icon-left">
+                            <i class="pi pi-search"></i>
+                            <input pInputText placeholder="Search..." type="text"/>
+                        </span>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th pSortableColumn="id">id
+                            <p-sortIcon field="id"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="reference">reference
+                            <p-sortIcon field="reference"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="email">email
+                            <p-sortIcon field="email"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="mdp">mdp
+                            <p-sortIcon field="mdp"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="dateCreation">dateCreation
+                            <p-sortIcon field="dateCreation"></p-sortIcon>
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                </ng-template>
+                <ng-template let-compte pTemplate="body">
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="compte"></p-tableCheckbox>
+                        </td>
+                        <td>{{compte.id }}
+                        <td>{{compte.reference }}
+                        <td>{{compte.email }}
+                        <td>{{compte.mdp }}
+                        <td>{{compte.dateCreation | date:'dd/MM/yyyy' }}</td>
+
+                        <td>
+                            <button (click)="editCompte(compte)" class="p-button-rounded p-button-success p-mr-2"
+                                    icon="pi pi-pencil"
+                                    pButton
+                                    pRipple></button>
+                            <button (click)="viewCompte(compte)" class="p-button-rounded p-button-info p-mr-2"
+                                    icon="pi pi-list" pButton
+                                    pRipple></button>
+                            <button (click)="deleteCompte(compte)" class="p-button-rounded p-button-danger"
+                                    icon="pi pi-trash" pButton
+                                    pRipple></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total
+                        there {{comptes ? comptes.length == 1 ? 'is' : 'are' : 'is' }} {{comptes ? comptes.length : 0 }} {{comptes ? comptes.length == 1 ? 'compte' : 'comptes' : 0 }}
+                        .
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-compte-create></app-compte-create>
+        <app-compte-edit></app-compte-edit>
+        <app-compte-view></app-compte-view>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<p-dialog [(visible)]="editCompteDialog" [formGroup]="editCompteForm" [modal]="true" [style]="{width: '450px'}"
+          header="Compte Edit" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="1">reference</label>
+            <input autofocus class="p-mb-2 p-mr-2" formControlName="reference" id="1" pInputText
+                   placeholder="reference" required type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="2">email</label>
+            <input autofocus class="p-mb-2 p-mr-2" formControlName="email" id="2" pInputText placeholder="email"
+                   required type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="3">mdp</label>
+            <input autofocus class="p-mb-2 p-mr-2" formControlName="mdp" id="3" pInputText placeholder="mdp" required
+                   type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="4">dateCreation</label>
+            <p-calendar dateFormat="dd.mm.yy" formControlName="dateCreation"></p-calendar>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideEditDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
+                pRipple></button>
+        <button (click)="submit()" class="p-button-text" icon="pi pi-check" label="Edit" pButton pRipple></button>
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,107 @@
+<p-dialog [(visible)]="createCompteDialog" [modal]="true" [style]="{width: '70vw'}" header="Compte Details"
+          styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Compte">
+                <div class="p-field">
+                    <label for="1">reference</label>
+                    <input [(ngModel)]="selectedCompte.reference" autofocus class="p-mb-2 p-mr-2" id="1" pInputText
+                           placeholder="reference" required type="text"/>
+                </div>
+                <div class="p-field">
+                    <label for="2">email</label>
+                    <input [(ngModel)]="selectedCompte.email" autofocus class="p-mb-2 p-mr-2" id="2" pInputText
+                           placeholder="email" required type="text"/>
+                </div>
+                <div class="p-field">
+                    <label for="3">mdp</label>
+                    <input [(ngModel)]="selectedCompte.mdp" autofocus class="p-mb-2 p-mr-2" id="3" pInputText
+                           placeholder="mdp" required type="text"/>
+                </div>
+                <div class="p-field">
+                    <label for="4">dateCreation</label>
+                    <p-calendar [(ngModel)]="selectedCompte.dateCreation" dateFormat="yy-mm-dd" id="4"
+                                placeholder="dateCreation"></p-calendar>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel header="Produit">
+                <div class="p-grid">
+                    <div class="p-col">
+                        <div class="p-field">
+                            <label for="1">reference</label>
+                            <input [(ngModel)]="selectedProduit.reference" autofocus class="p-mb-2 p-mr-2" id="1"
+                                   pInputText
+                                   placeholder="reference" required type="text"/>
+                        </div>
+
+                        <div class="p-field">
+                            <label for="2">prix</label>
+                            <p-inputNumber [(ngModel)]="selectedProduit.prix" class="p-mb-2 p-mr-2" id="2"
+                                           placeholder="prix"></p-inputNumber>
+                        </div>
+                        <div class="p-field">
+                            <label for="3">qteStock</label>
+                            <p-inputNumber [(ngModel)]="selectedProduit.qteStock" class="p-mb-2 p-mr-2" id="3"
+                                           placeholder="qteStock"></p-inputNumber>
+                        </div>
+                        <div class="p-field">
+                            <label for="4">dateAjout</label>
+                            <p-calendar [(ngModel)]="selectedProduit.dateAjout" dateFormat="yy-mm-dd" id="4"
+                                        placeholder="dateAjout"></p-calendar>
+                        </div>
+                        <div class="p-field">
+                            <label for="5">prixUnitaire</label>
+                            <p-inputNumber [(ngModel)]="selectedProduit.prixUnitaire" class="p-mb-2 p-mr-2" id="5"
+                                           placeholder="prixUnitaire"></p-inputNumber>
+                        </div>
+                        <p-button (onClick)="addProduit()" icon="pi pi-plus" iconPos="right" label="Add"></p-button>
+                    </div>
+                    <div class="p-col">
+                        <div class="card">
+                            <h5>Vertical</h5>
+                            <p-table [scrollable]="true" [value]="produitListe" scrollHeight="200px">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th>reference</th>
+                                        <th>prix</th>
+                                        <th>qteStock</th>
+                                        <th>dateAjout</th>
+                                        <th>prixUnitaire</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template let-p pTemplate="body">
+                                    <tr>
+                                        <td>{{p.reference}}</td>
+                                        <td>{{p.prix}}</td>
+                                        <td>{{p.qteStock}}</td>
+                                        <td>{{p.dateAjout}}</td>
+                                        <td>{{p.prixUnitaire}}</td>
+                                        <td>
+                                            <button (click)="deleteProduit(p)" class="p-button-rounded p-button-danger"
+                                                    icon="pi pi-times" pButton
+                                                    type="button"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideCreateDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
+                pRipple></button>
+        <button (click)="save()" class="p-button-text" icon="pi pi-check" label="Save" pButton pRipple></button>
+
+
+    </ng-template>
+
+
+</p-dialog>

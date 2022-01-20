@@ -1,0 +1,27 @@
+<p-dialog [(visible)]="viewCommandeDialog" [modal]="true" [style]="{width: '450px'}" header="Commande Details"
+          styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="total">reference</label>
+            <input [(ngModel)]="selectedCommande.reference" autofocus class="p-mb-2 p-mr-2" disabled id="1" pInputText
+                   required type="text"/>
+        </div>
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="totalPaye">prixTotal</label>
+                <p-inputNumber [(ngModel)]="selectedCommande.prixTotal" [disabled]="true" class="p-mb-2 p-mr-2"
+                               id="2"></p-inputNumber>
+            </div>
+        </div>
+        <div class="p-field">
+            <label for="ref">dateCreation</label>
+            <input autofocus class="p-mb-2 p-mr-2" disabled id="1" pInputText required type="text" value="{{selectedCommande.dateCreation |
+                date:'dd.MM.yyyy'}}"/>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideViewDialog()" class="p-button-text" icon="pi pi-times" label="Fermer" pButton
+                pRipple></button>
+    </ng-template>
+</p-dialog>

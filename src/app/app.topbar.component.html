@@ -1,0 +1,38 @@
+<div class="layout-topbar">
+
+    <a (click)="appMain.onRightMenuClick($event)" class="layout-right-panel-button layout-topbar-icon" href="#">
+        <i class="pi pi-ellipsis-v"></i>
+    </a>
+
+    <a (click)="appMain.onMenuButtonClick($event)" class="layout-menu-button layout-topbar-icon" href="#">
+        <i class="pi pi-bars"></i>
+    </a>
+
+    <a class="layout-topbar-logo" href="#">
+        <span style="font-size: 2rem;color: white;font-weight: 900;">PROJECT NAME</span>
+    </a>
+
+
+    <ul class="topbar-menu">
+        <li [ngClass]="{'active-topmenuitem fadeInDown': appMain.topbarUserMenuActive}" class="user-profile">
+            <a (click)="appMain.onTopbarUserMenuButtonClick($event)" *ngIf="!app.inlineUser" href="#">
+                <img alt="roma-layout" src="assets/layout/images/avatar.png"/>
+                <div class="layout-profile-userinfo">
+                    <span class="layout-profile-name">{{authenticatedUser.email}}</span>
+                    <span class="layout-profile-name">{{authenticatedUser.firstName}}</span>
+
+                </div>
+            </a>
+            <ul class="fadeInDown">
+
+                <li>
+                    <a (click)="logout()">
+                        <i class="pi pi-sign-out"></i>
+                        <span class="p-ml-2">Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</div>

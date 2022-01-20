@@ -1,0 +1,34 @@
+<p-dialog [(visible)]="editProduitDialog" [formGroup]="editProduitForm" [modal]="true" [style]="{width: '450px'}"
+          header="Produit Edit" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="1">reference</label>
+            <input autofocus class="p-mb-2 p-mr-2" formControlName="reference" id="1" pInputText
+                   placeholder="reference" required type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="2">prix</label>
+            <p-inputNumber class="p-mb-2 p-mr-2" formControlName="prix" id="2" placeholder="prix"></p-inputNumber>
+        </div>
+        <div class="p-field">
+            <label for="3">qteStock</label>
+            <p-inputNumber class="p-mb-2 p-mr-2" formControlName="qteStock" id="3"
+                           placeholder="qteStock"></p-inputNumber>
+        </div>
+        <div class="p-field">
+            <label for="4">dateAjout</label>
+            <p-calendar dateFormat="dd.mm.yy" formControlName="dateAjout"></p-calendar>
+        </div>
+        <div class="p-field">
+            <label for="5">prixUnitaire</label>
+            <p-inputNumber class="p-mb-2 p-mr-2" formControlName="prixUnitaire" id="5"
+                           placeholder="prixUnitaire"></p-inputNumber>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideEditDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
+                pRipple></button>
+        <button (click)="submit()" class="p-button-text" icon="pi pi-check" label="Edit" pButton pRipple></button>
+    </ng-template>
+</p-dialog>

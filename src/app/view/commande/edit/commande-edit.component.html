@@ -1,0 +1,25 @@
+<p-dialog [(visible)]="editCommandeDialog" [formGroup]="editCommandeForm" [modal]="true" [style]="{width: '450px'}"
+          header="Commande Edit" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="1">reference</label>
+            <input autofocus class="p-mb-2 p-mr-2" formControlName="reference" id="1" pInputText
+                   placeholder="reference" required type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="2">prixTotal</label>
+            <p-inputNumber class="p-mb-2 p-mr-2" formControlName="prixTotal" id="2"
+                           placeholder="prixTotal"></p-inputNumber>
+        </div>
+        <div class="p-field">
+            <label for="3">dateCreation</label>
+            <p-calendar dateFormat="dd.mm.yy" formControlName="dateCreation"></p-calendar>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideEditDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
+                pRipple></button>
+        <button (click)="submit()" class="p-button-text" icon="pi pi-check" label="Edit" pButton pRipple></button>
+    </ng-template>
+</p-dialog>

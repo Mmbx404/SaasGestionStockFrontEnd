@@ -1,0 +1,30 @@
+<p-dialog [(visible)]="viewCompteDialog" [modal]="true" [style]="{width: '450px'}" header="Commande Details"
+          styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="total">reference</label>
+            <input [(ngModel)]="selectedCompte.reference" autofocus class="p-mb-2 p-mr-2" disabled id="1" pInputText
+                   required type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="total">email</label>
+            <input [(ngModel)]="selectedCompte.email" autofocus class="p-mb-2 p-mr-2" disabled id="2" pInputText
+                   required type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="total">mdp</label>
+            <input [(ngModel)]="selectedCompte.mdp" autofocus class="p-mb-2 p-mr-2" disabled id="3" pInputText
+                   required type="text"/>
+        </div>
+        <div class="p-field">
+            <label for="ref">dateCreation</label>
+            <input autofocus class="p-mb-2 p-mr-2" disabled id="1" pInputText required type="text" value="{{selectedCompte.dateCreation |
+                date:'dd.MM.yyyy'}}"/>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideViewDialog()" class="p-button-text" icon="pi pi-times" label="Fermer" pButton
+                pRipple></button>
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,47 @@
+<p-dialog [(visible)]="createProduitDialog" [modal]="true" [style]="{width: '70vw'}" header="Produit Details"
+          styleClass="p-fluid">
+
+    <ng-template pTemplate="content">
+        <p-tabView>
+            <p-tabPanel header="Produit">
+                <div class="p-field">
+                    <label for="1">reference</label>
+                    <input [(ngModel)]="selectedProduit.reference" autofocus class="p-mb-2 p-mr-2" id="1" pInputText
+                           placeholder="reference" required type="text"/>
+                </div>
+                <div class="p-field">
+                    <label for="2">prix</label>
+                    <p-inputNumber [(ngModel)]="selectedProduit.prix" class="p-mb-2 p-mr-2" id="2"
+                                   placeholder="prix"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="3">qteStock</label>
+                    <p-inputNumber [(ngModel)]="selectedProduit.qteStock" class="p-mb-2 p-mr-2" id="3"
+                                   placeholder="qteStock"></p-inputNumber>
+                </div>
+                <div class="p-field">
+                    <label for="4">dateAjout</label>
+                    <p-calendar [(ngModel)]="selectedProduit.dateAjout" dateFormat="yy-mm-dd" id="4"
+                                placeholder="dateAjout"></p-calendar>
+                </div>
+                <div class="p-field">
+                    <label for="5">prixUnitaire</label>
+                    <p-inputNumber [(ngModel)]="selectedProduit.prixUnitaire" class="p-mb-2 p-mr-2" id="5"
+                                   placeholder="prixUnitaire"></p-inputNumber>
+                </div>
+            </p-tabPanel>
+
+        </p-tabView>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideCreateDialog()" class="p-button-text" icon="pi pi-times" label="Cancel" pButton
+                pRipple></button>
+        <button (click)="save()" class="p-button-text" icon="pi pi-check" label="Save" pButton pRipple></button>
+
+
+    </ng-template>
+
+
+</p-dialog>

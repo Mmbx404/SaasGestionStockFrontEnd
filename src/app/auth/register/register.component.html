@@ -1,0 +1,64 @@
+<div class="login-body">
+    <div class="card login-panel p-fluid">
+        <div class="p-mt-4">
+            <div [formGroup]="registerForm" class="p-grid">
+                <div class="p-col-12 p-sm-6 p-md-6 logo-container">
+                    <span class="guest-sign-in" style="font-weight: 600;font-size: 2rem;">Inscription</span>
+                </div>
+
+                <div class="p-col-12 username-container">
+                    <!-- <h:panelGroup> -->
+                    <label>FirstName</label>
+                    <div class="login-input">
+                        <input autofocus class="p-mb-2 p-mr-2" formControlName="firstName" id="1" pInputText required
+                               type="text"/>
+                    </div>
+                    <!-- </h:panelGroup> -->
+                </div>
+                <div class="p-col-12 username-container">
+                    <!-- <h:panelGroup> -->
+                    <label>LastName</label>
+                    <div class="login-input">
+                        <input autofocus class="p-mb-2 p-mr-2" formControlName="lastName" id="1" pInputText required
+                               type="text"/>
+                    </div>
+                    <!-- </h:panelGroup> -->
+                </div>
+                <div class="p-col-12 username-container">
+                    <!-- <h:panelGroup> -->
+                    <label>Username</label>
+                    <div class="login-input">
+                        <input autofocus class="p-mb-2 p-mr-2" formControlName="userName" id="1" pInputText required
+                               type="text"/>
+                    </div>
+                    <!-- </h:panelGroup> -->
+                </div>
+                <div class="p-col-12 username-container">
+                    <!-- <h:panelGroup> -->
+                    <label>Email</label>
+                    <div class="login-input">
+                        <input autofocus class="p-mb-2 p-mr-2" formControlName="email" id="1" pInputText required
+                               type="email"/>
+                    </div>
+                    <!-- </h:panelGroup> -->
+                </div>
+
+                <div class="p-col-12 password-container">
+                    <!-- <h:panelGroup> -->
+                    <label>Password</label>
+                    <div class="login-input">
+                        <input formControlName="password" pPassword type="password"/>
+                    </div>
+                    <!-- </h:panelGroup> -->
+                </div>
+
+
+                <div class="p-col-12 p-sm-6 p-md-6">
+                    <button (click)="submit()" [disabled]="registerForm.invalid" icon="pi pi-check" label="Register"
+                            pButton
+                            type="button"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

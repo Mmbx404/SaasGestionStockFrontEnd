@@ -1,0 +1,41 @@
+<p-dialog [(visible)]="viewProduitDialog" [modal]="true" [style]="{width: '450px'}" header="Commande Details"
+          styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="total">reference</label>
+            <input [(ngModel)]="selectedProduit.reference" autofocus class="p-mb-2 p-mr-2" disabled id="1" pInputText
+                   required type="text"/>
+        </div>
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="totalPaye">prix</label>
+                <p-inputNumber [(ngModel)]="selectedProduit.prix" [disabled]="true" class="p-mb-2 p-mr-2"
+                               id="2"></p-inputNumber>
+            </div>
+        </div>
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="totalPaye">qteStock</label>
+                <p-inputNumber [(ngModel)]="selectedProduit.qteStock" [disabled]="true" class="p-mb-2 p-mr-2"
+                               id="3"></p-inputNumber>
+            </div>
+        </div>
+        <div class="p-field">
+            <label for="ref">dateAjout</label>
+            <input autofocus class="p-mb-2 p-mr-2" disabled id="1" pInputText required type="text" value="{{selectedProduit.dateAjout |
+                date:'dd.MM.yyyy'}}"/>
+        </div>
+        <div class="p-formgrid p-grid">
+            <div class="p-field p-col">
+                <label for="totalPaye">prixUnitaire</label>
+                <p-inputNumber [(ngModel)]="selectedProduit.prixUnitaire" [disabled]="true" class="p-mb-2 p-mr-2"
+                               id="5"></p-inputNumber>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button (click)="hideViewDialog()" class="p-button-text" icon="pi pi-times" label="Fermer" pButton
+                pRipple></button>
+    </ng-template>
+</p-dialog>
